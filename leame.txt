@@ -1,0 +1,26 @@
+Serie de tiempo fotos en el lab
+hecho el 201703
+para practicar tensorflow con series de tiempo
+y visualizacion
+----------------------------------
+Este sistema no procesa el contenido de las fotos. Solo procesa las series de tiempo
+
+csvhaciajson.py           para convertir CSV a JSON desde el sistema de archivos, no es compatible con jupyter
+csvhaciajson2.py          para convertir CSV a JSON desde una URL, sin pandas, es compatible con jupyter
+csvhaciajson3.py          para convertir CSV a JSON a partir del SFTP. para traer datos de un servidor de fotos
+cuantas_fotos_raw.csv			lista con fecha y hora, sin nombre de las fotos de la camara
+cuantas_fotos.csv	        lista con fecha y hora, sin nombres de las fotos de la camara.
+cuantas_fotos_dia_hh_cantidad.csv	fotos dia x hora x cantidad
+					1-Domingo 2-lunes 3-martes 4-miercoles 5-jueves 6-viernes 7-sabado
+					hora formato 24, Cada fila representa un movimiento frente a la camara de seguridad, ya sea de entrada o salida.
+                           El contenido de la foto misma no se graba, solo la ocurrencia del evento.
+levantar_lavadero.sh       para levantar el csv al bigquery
+esquemafeliz.txt           contiene el esquema de la tabla en el bigquery
+traer_csvfeliz.sh          copia el CSV del servidor de camara o de los datos supervisados
+programafeliz.txt          para reducir dimension de los datos con Machine Learning
+cuantas_fotos_raw.json     los datos en formato JSON delimitados por new line
+
+DEFINICIONES
+------------
+DATOS SUPERVISADOS         cuando viene del sistema lavadero (datos estructurados)
+DATOS NO SUPERVISADOS      cuando viene de los sensores de movimiento de la camara (datos no estructurados)

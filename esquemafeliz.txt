@@ -1,0 +1,4 @@
+[
+{"name":"fecha","type":"date"},
+{"name":"hora","type":"string"}
+]

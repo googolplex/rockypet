@@ -1,0 +1,73 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
+from sklearn.cross_validation import train_test_split
+from sklearn.manifold import TSNE
+# import sys
+
+# https://github.com/llSourcell/visualize_dataset_demo
+# https://github.com/llSourcell/visualize_dataset_demo/blob/master/data_visualization.py
+# para visualizar el data set
+
+import matplotlib.pyplot as plt
+# paso 1 - bajar los datos
+dataframe_all = pd.read_csv("https://raw.githubusercontent.com/cristhianrey/tensor/master/datasetLab/cuantas_fotos_dia_hh_cantidad.csv")
+num_rows = dataframe_all.shape[0]
+
+# limpiar los datos
+counter_nan = dataframe_all.isnull().sum()
+counter_withouth_nan = counter_nan[counter_nan==0]
+dataframe_all = dataframe_all[counter_withouth_nan.keys()]
+
+# removemos las columnas que no queremos
+# en este caso las dejamos todas
+
+dataframe_all = dataframe_all.ix[:,0:] 
+# print dataframe_all 
+
+# obtengo los titulos de las columnas
+columnas = dataframe_all.columns
+# print columnas
+
+# creamos los vectores feature
+
+# x = dataframe_all.ix[:,:-1].values
+# los features son la segunda columna en adelante
+x = dataframe_all.ix[:,[1,2]].values
+standard_scalar = StandardScaler()
+x_std = standard_scalar.fit_transform(x)
+# print dataframe_all
+# print x
+# print x_std
+
+# y = dataframe_all.ix[:,-1].values
+# porque las clases estan en la primera columna en este caso
+y = dataframe_all.ix[:,1].values
+class_labels  = np.unique(y)
+#print class_labels
+
+# print y
+
+label_encoder = LabelEncoder()
+q = label_encoder.fit_transform(y)
+#print q
+
+# partir los datos de entrenamiento y prueba
+test_percentage = 0.1
+x_train,x_test,y_train_y_test = train_test_split(x_std,q,test_size=test_percentage,random_state = 0)
+
+# t distributed stochastic network embedding (t-SNE) visualization
+tsne = TSNE(n_components=2,random_state = 0 )
+x_test_2d = tsne.fit_transform(x_std)
+
+# lo separo en tres partes
+
+markers=('dia','hora','Cant')
+color_map = {0:'red',1:'blue',2:'lightgreen'}
+plt.figure()
+for idx, cl in enumerate(np.unique(x_test_2d)):
+    # plt.scatter(x=x_test_2d[cl,0],y=x_test_2d[cl,1],c=color_map[idx],marker=markers[idx],label=cl)
+    print idx,cl
+
+
