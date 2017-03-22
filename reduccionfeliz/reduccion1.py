@@ -8,11 +8,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.manifold import TSNE
 
 
 print (sys.executable)
 print (sys.version)
-origen = os.getcwd() + '/rockypet/reduccionfeliz/pml-training.csv'
+origen = os.getcwd() + '/rogerrepo/rockypet/reduccionfeliz/pml-training.csv'
 print origen
 
 
@@ -65,6 +66,6 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 # le aplico el t-sne
 # t-distributed Stochastic Neighbor Embedding (t-SNE) visualization
-from sklearn.manifold import TSNE
+
 tsne = TSNE(n_components=2, random_state=0)
 x_test_2d = tsne.fit_transform(x_test)

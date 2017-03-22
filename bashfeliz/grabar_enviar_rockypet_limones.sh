@@ -5,5 +5,5 @@ rm *.*~
 cp *.sh rockypet/bashfeliz
 cd rockypet
 git add -A
-git commit -a -m "inicio del proyecto rockypet"
+git commit -a -m "instalo t-sne en la pc"
 git push -u origin master
