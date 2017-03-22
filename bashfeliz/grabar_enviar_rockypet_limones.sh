@@ -5,5 +5,5 @@ rm *.*~
 cp *.sh rockypet/bashfeliz
 cd rockypet
 git add -A
-git commit -a -m "instalo t-sne en la pc"
+git commit -a -m "matriz pivoteada lista para el bigquery"
 git push -u origin master

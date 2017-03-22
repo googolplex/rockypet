@@ -1,9 +1,13 @@
 # estudio la matriz de ejemplo de siraj Raval
+# reescrito para practicar por GOOGOL PLEX
+# el 2017.03
+
 import sys
 import csv
 import os
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cross_validation import train_test_split
@@ -59,6 +63,7 @@ y = label_encoder.fit_transform(y)
 # print y
 
 # parto los datos en dos conjuntos
+# el de prueba y el de entrenamiento
 
 test_percentage = 0.1
 x_train, x_test, y_train, y_test = train_test_split(
@@ -69,3 +74,19 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 tsne = TSNE(n_components=2, random_state=0)
 x_test_2d = tsne.fit_transform(x_test)
+
+markers = ('s', 'd', 'o', '^', 'v')
+# hago hashes con los colores
+color_map = {0: 'red', 1: 'blue', 2: 'lightgreen', 3: 'purple', 4: 'cyan'}
+plt.figure()
+# print np.unique(y_test)
+# print enumerate(np.unique(y_test))
+
+for idx, cl in enumerate(np.unique(y_test)):
+    plt.scatter(x=x_test_2d[y_test == cl, 0], y=x_test_2d[
+                y_test == cl, 1], c=color_map[idx], marker=markers[idx], label=cl)
+plt.xlabel('X in t-SNE')
+plt.ylabel('Y in t-SNE')
+plt.legend(loc='upper left')
+plt.title('t-SNE visualization of test data')
+plt.show()
