@@ -5,5 +5,5 @@ rm *.*~
 cp *.sh rockypet/bashfeliz
 cd rockypet
 git add -A
-git commit -a -m "matriz pivoteada lista para el bigquery"
+git commit -a -m "matriz pivoteada uploaded al bigquery"
 git push -u origin master

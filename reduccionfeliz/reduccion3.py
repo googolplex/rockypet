@@ -75,7 +75,9 @@ matriz_pivoteada = sin_filas_nulas.set_index('Indicator Code').T
 matriz_pivoteada_cuantos = matriz_pivoteada.shape[0]
 print 'matriz pivoteada filas ' + str(matriz_pivoteada_cuantos)
 
-matriz_pivoteada.to_csv('matriz_pivoteada.csv')
+# agrego nombre a la columna indice
+matriz_pivoteada.index.name = "PERIODOS"
+matriz_pivoteada.to_csv('matriz_pivoteada.csv', sep=';')
 # En la matriz pivoteada se pueden ver algunas anomalias
 # 1960-1983 tiene valores cero en TX.VAL.MRCH.R5.ZS	TX.VAL.MRCH.R4.ZS
 # por ahora ignoramos

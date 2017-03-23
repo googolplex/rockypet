@@ -1,0 +1,8 @@
+ANTES DE LA NORMALIZACION 2017.3.23a
+NO HACE FALTA CON PEARSON
+------------------------------------
+
+SELECT CORR(TX_VAL_MRCH_WR_ZS,TX_VAL_MRCH_WL_CD) as C1
+   FROM [abstract-frame-749:articuloUA.matriz_pivoteada_reduccion1] 
+
+CORR = 0.5570658203714107
